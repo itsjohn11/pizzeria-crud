@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 import org.springframework.data.annotation.Id;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +18,8 @@ public class Pizza {
     private Integer id;
 
     private String name;
-    private String desciption;
+    private String description;
+    private String imageUrl;
     private BigDecimal price;
 
 
@@ -39,12 +39,20 @@ public class Pizza {
         this.name = name;
     }
 
-    public String getDesciption() {
-        return this.desciption;
+    public String getDescription() {
+        return this.description;
     }
 
-    public void setDesciption(String desciption) {
-        this.desciption = desciption;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public BigDecimal getPrice() {

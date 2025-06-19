@@ -4,6 +4,14 @@
     <head th:replace="{fragments/head :: head'('Pizzas')}" />
 
 <body>
+    
+    <h1>Pizzas</h1>
+    <ul>
+        <li th:each="pizza : ${Pizzas}">
+            [[${pizza.name}]]
 
+        </li>
+    </ul>
+    
 </body>
 </html>
