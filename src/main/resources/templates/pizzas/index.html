@@ -1,17 +1,48 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-    <head th:replace="{fragments/head :: head'('Pizzas')}" />
+<head th:replace="~{fragments/head :: head('Pizzas')}" />
 
 <body>
-    
-    <h1>Pizzas</h1>
-    <ul>
-        <li th:each="pizza : ${Pizzas}">
-            [[${pizza.name}]]
-
-        </li>
-    </ul>
-    
+    <main class="container">
+        <section class="title row">
+            <div class="col-12">
+                <h1 class="text-center">
+                    Pizzas
+                </h1>
+            </div>
+        </section>
+        <section class="pizzas">
+            <table class="table table-hover" th:if="${pizzas.size() > 0}">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Publisher</th>
+                        <th scope="col">Publication</th>
+                        <th scope="col">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="pizza : ${pizza}" th:oject="${pizza}">
+                        <td>[[*{id}]]</td>
+                        <td>[[*{Title}]]</td>
+                        <td>[[*{Description}]]</td>
+                        <td>[[*{price}]]</td>
+                        <td>
+                            <a th:href="@{|/pizzas/*{id}|}" class="btn btn-primary btn-sm">View</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="text-center text-primary" th:unless="${pizzas.size()}> 0">
+                There are no pizzas available at this moment
+            </h2>
+        </section>
+        <p th:text="${pizzas}"></p>
+    </main>
 </body>
+
 </html>
